@@ -51,7 +51,8 @@ describe('incrementName', () => {
   })
 
   it('should handle filename with no extension', () => {
-    expect(incrementName('filename')).toBe('filename-1.filename')
+    expect(incrementName('filename')).toBe('filename-1')
+    expect(incrementName('filename-1')).toBe('filename-2')
   })
 
   it('should handle filename that is just an extension', () => {
@@ -59,7 +60,7 @@ describe('incrementName', () => {
   })
 
   it('should handle empty string', () => {
-    expect(incrementName('')).toBe('-1.')
+    expect(incrementName('')).toBe('-1')
   })
 
   it('should handle filename ending with hyphen and non-numeric', () => {

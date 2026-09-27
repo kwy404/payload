@@ -13,6 +13,7 @@ import { fileExists } from './fileExists.js'
  * incrementName('file-99.jpg') // 'file-100.jpg'
  */
 export const incrementName = (name: string): string => {
+  const hasExtension = name.includes('.')
   const extension = name.split('.').pop()
   const baseFilename = sanitize(name.substring(0, name.lastIndexOf('.')) || name)
   let incrementedName = baseFilename
@@ -26,7 +27,7 @@ export const incrementName = (name: string): string => {
     const incremented = Number(matchedNumber) + 1
     incrementedName = `${matchedName}-${incremented}`
   }
-  return `${incrementedName}.${extension}`
+  return hasExtension ? `${incrementedName}.${extension}` : incrementedName
 }
 
 type Args = {
